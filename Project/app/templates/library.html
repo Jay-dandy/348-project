@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Your Personal Library</h2>
+<div>
+    <h3>Data Structures</h3>
+    {% if data_structures %}
+    <ul>
+        {% for ds in data_structures %}
+            <li><a href="{{ url_for('views.details', id=ds.id) }}">{{ ds.ds_name }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>No data structures found.</p>
+    {% endif %}
+
+    <h3>Algorithms</h3>
+    {% if algorithms %}
+    <ul>
+        {% for algo in algorithms %}
+            <li><a href="{{ url_for('views.details', id=algo.id) }}">{{ algo.algo_name }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>No algorithms found.</p>
+    {% endif %}
+</div>
+<a href="{{ url_for('views.dashboard') }}">Back to Dashboard</a>
+{% endblock %}

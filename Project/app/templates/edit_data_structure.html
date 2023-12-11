@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Edit Data Structure</h2>
+<form action="{{ url_for('views.edit_data_structure', id=ds.id) }}" method="POST">
+    <label for="ds_name">Name:</label>
+    <input type="text" name="ds_name" value="{{ ds.ds_name }}" required>
+
+    <label for="time_complexity">Time Complexity:</label>
+    <input type="text" name="time_complexity" value="{{ ds.time_complexity }}">
+
+    <label for="mem_complexity">Memory Complexity:</label>
+    <input type="text" name="mem_complexity" value="{{ ds.mem_complexity }}">
+
+    <label for="type">Type:</label>
+    <input type="text" name="type" value="{{ ds.type }}">
+
+    <label for="description">Description:</label>
+    <textarea name="description">{{ ds.description }}</textarea>
+
+    <label for="code_example">Code Example:</label>
+    <textarea name="code_example">{{ ds.code_example }}</textarea>
+
+    <input type="submit" value="Update">
+</form>
+{% endblock %}

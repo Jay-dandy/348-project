@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Data Structures and Algorithms</title>
+    <!-- later link any CSS frameworks or stylesheets here -->
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to Justin's Carnival of Data Structures and Algorithms</h1>
+        
+        <form action="/search" method="POST">
+            <input type="text" name="query" placeholder="Search for a data structure or algorithm">
+            <input type="submit" value="Search">
+        </form>
+        
+        <!-- links to add new Data Structure or Algorithm -->
+        <div>
+            <a href="{{ url_for('views.add_data_structure') }}">Add Data Structure</a>
+            <a href="{{ url_for('views.add_algorithm') }}">Add Algorithm</a>
+        </div>
+        
+        <!-- display results -->
+        {% if results %}
+        <ul>
+            {% for item in results %}
+            <li>
+                <a href="{{ url_for('views.details', id=item.id) }}">{{ item.name }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</body>
+
+</html>

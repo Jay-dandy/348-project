@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="dashboard-container">
+    <h2 class="dashboard-title">Dashboard</h2>
+
+    <!-- Search Form -->
+    <form action="{{ url_for('views.search') }}" method="POST" class="search-form">
+        <input type="text" name="search_query" placeholder="Search Data Structures or Algorithms...">
+        <button type="submit" class="btn btn-info">Search</button>
+    </form>
+
+    <div class="dashboard-actions">
+        <a href="{{ url_for('views.add_data_structure') }}" class="dashboard-link btn btn-primary">Add Data Structure</a>
+        <a href="{{ url_for('views.add_algorithm') }}" class="dashboard-link btn btn-secondary">Add Algorithm</a>
+        <a href="{{ url_for('views.library') }}" class="dashboard-link btn btn-success">Library</a>
+        <a href="{{ url_for('views.logout') }}" class="dashboard-link btn btn-danger">Logout</a>
+    </div>
+</div>
+{% endblock %}

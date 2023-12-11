@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Details</h2>
+<div>
+    <h3>{{ item.ds_name or item.algo_name }}</h3>
+    <p>Time Complexity: {{ item.time_complexity }}</p>
+    <p>Memory Complexity: {{ item.mem_complexity }}</p>
+    <p>Type/Version: {{ item.type or item.version }}</p>
+    <p>Description: {{ item.description }}</p>
+    {% if item.code_example %}
+        <h4>Code Example:</h4>
+        <pre>{{ item.code_example }}</pre>
+    {% endif %}
+
+    <!-- Edit and Delete Buttons -->
+    {% if item.ds_name %}
+        <a href="{{ url_for('views.edit_data_structure', id=item.id) }}" class="btn btn-primary">Edit Data Structure</a>
+        <a href="{{ url_for('views.delete_data_structure', id=item.id) }}" class="btn btn-danger">Delete Data Structure</a>
+    {% elif item.algo_name %}
+        <a href="{{ url_for('views.edit_algorithm', id=item.id) }}" class="btn btn-primary">Edit Algorithm</a>
+        <a href="{{ url_for('views.delete_algorithm', id=item.id) }}" class="btn btn-danger">Delete Algorithm</a>
+    {% endif %}
+</div>
+<a href="{{ url_for('views.library') }}">Back to Library</a>
+{% endblock %}

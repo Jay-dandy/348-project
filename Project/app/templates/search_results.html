@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="search-results-container">
+    <h2>Search Results for "{{ search_query }}"</h2>
+
+    <div>
+        <h3>Data Structures</h3>
+        <ul>
+            {% for ds in data_structures %}
+                <li><a href="{{ url_for('views.details', id=ds.id) }}">{{ ds.ds_name }}</a></li>
+            {% else %}
+                <p>No data structures found.</p>
+            {% endfor %}
+        </ul>
+
+        <h3>Algorithms</h3>
+        <ul>
+            {% for algo in algorithms %}
+                <li><a href="{{ url_for('views.details', id=algo.id) }}">{{ algo.algo_name }}</a></li>
+            {% else %}
+                <p>No algorithms found.</p>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <a href="{{ url_for('views.dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+</div>
+{% endblock %}
